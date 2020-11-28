@@ -88,7 +88,5 @@ func (m *MeliService) PutSKU(ID, token string, payload []byte) error {
 
 	defer resp.Body.Close()
 
-	fmt.Println("Response Status code: ", resp.StatusCode)
-
 	return nil
 }

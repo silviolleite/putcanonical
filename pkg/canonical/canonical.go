@@ -60,10 +60,16 @@ func (cn *Canonicals) process(c *canonical, wg *sync.WaitGroup) error {
 	printProcessing(c, payload)
 
 	err = cn.meli.PutSKU(c.id, cn.token, payload)
-	Check(err)
+	if err != nil {
+		printError(c, payload)
+	}
 
 	printSuccess(c)
 	return nil
+}
+
+func printError(c *canonical, payload []byte) {
+	fmt.Printf("\n--------------------------------------------------------\nError: sku: %s \nID: %s Payload: %s \n", c.sku, c.id, payload)
 }
 
 func printProcessing(c *canonical, payload []byte) {
