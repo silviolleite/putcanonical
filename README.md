@@ -24,7 +24,7 @@ SKU0000002,MLB00002
 SKU0000003,MLB00003
 ```
 
-## Rodando o script
+## Rodando o programa compilado
 
 Rode o comando passando as flags.
 
@@ -36,6 +36,18 @@ Rode o comando passando as flags.
 #### Atualizando um item 
 ```sh
 ./putcanonical -c <canonical_sku> -i <meli_id> -t <access_token>  
+```
+
+## Rodando o programa com o `go run`
+
+#### Atualizando uma lista  
+```sh
+go run cmd/main.go -f <file_path> -t <access_token> 
+```
+
+#### Atualizando um item 
+```sh
+go run cmd/main.go -c <canonical_sku> -i <meli_id> -t <access_token>  
 ```
 
 #### Saida
