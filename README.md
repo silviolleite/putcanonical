@@ -6,13 +6,15 @@ O script irá atualizar o campo `seller_custom_field` no item e em todas as vari
 
 ### Parâmetros
 
-- `-f` => Caminho do arquivo que contenha a lista de sku e IDs que serão atualizados _(string)_
-- `-c` => Canonical SKU _(string)_
-- `-i` => ID do produto no Meli _(string)_
+- `-f` => Caminho do arquivo que contenha a lista de sku e IDs que serão atualizados _(string)_. Obrigatório para atualizar a partir de uma lista
+- `-c` => Canonical SKU _(string)_. Obrigatório para atualizar um item
+- `-i` => ID do produto no Meli _(string)_. Obrigatório para atualizar um item
 
 > Você deve escolher em atualizar por uma lista ou um item 
 
 - `-t` => Access Token _(string)_
+
+> Você irá precisar do `access_token` da conta a qual os produtos pertencem
 
 #### Arquivo de dados 
 
