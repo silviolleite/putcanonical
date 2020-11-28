@@ -13,10 +13,10 @@ import (
 func main() {
 	var f, i, c, t string
 
-	flag.StringVar(&f, "f", "", "Path to data file (Required)")
-	flag.StringVar(&i, "i", "", "Meli ID eg.: MLB1728494308")
-	flag.StringVar(&c, "c", "", "Canonical SKU eg.: PRDYMUPKZRHCFGW9")
-	flag.StringVar(&t, "t", "", "Access Token")
+	flag.StringVar(&f, "file", "", "Path to data file (Required)")
+	flag.StringVar(&i, "id", "", "Meli ID eg.: MLB1728494308")
+	flag.StringVar(&c, "sku", "", "Canonical SKU eg.: PRDYMUPKZRHCFGW9")
+	flag.StringVar(&t, "token", "", "Access Token")
 
 	flag.Parse()
 

@@ -28,7 +28,7 @@ func New(hc *http.Client, ls []string, token string) *Canonicals {
 	for _, v := range ls {
 		if v != "" {
 			l := strings.Split(v, ",")
-			canonicals.items = append(canonicals.items, &canonical{l[0], l[1]})
+			canonicals.items = append(canonicals.items, &canonical{strings.TrimSpace(l[0]), strings.TrimSpace(l[1])})
 		}
 	}
 
