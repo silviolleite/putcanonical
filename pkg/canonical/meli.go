@@ -20,10 +20,10 @@ type Item struct {
 	Variations []*Variation `json:"variations"`
 }
 
-func (m *MeliService) Items(ID string) (value string, err error) {
+func (m *MeliService) GetItems(ID string) (value string, err error) {
 	path := items + ID
 
-	req, err := m.client.NewRequest(http.MethodGet, path, nil, "")
+	req, err := m.client.NewPublicRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return value, err
 	}
@@ -42,10 +42,11 @@ func (m *MeliService) Items(ID string) (value string, err error) {
 	return string(body), nil
 }
 
-func (m *MeliService) ItemsVariations(ID string) (item *Item, err error) {
+
+func (m *MeliService) GetItemsVariations(ID string) (item *Item, err error) {
 	path := items + ID
 
-	req, err := m.client.NewRequest(http.MethodGet, path, nil, "")
+	req, err := m.client.NewPublicRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return item, err
 	}
@@ -71,10 +72,11 @@ func (m *MeliService) ItemsVariations(ID string) (item *Item, err error) {
 	return item, nil
 }
 
+
 func (m *MeliService) PutSKU(ID, token string, payload []byte) error {
 	path := items + ID
 
-	req, err := m.client.NewRequest(http.MethodPut, path, bytes.NewReader(payload), token)
+	req, err := m.client.NewPrivateRequest(http.MethodPut, path, bytes.NewReader(payload), token)
 	if err != nil {
 		return err
 	}

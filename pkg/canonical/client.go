@@ -71,6 +71,15 @@ func (c *Client) NewRequest(method, path string, body io.Reader, token string) (
 	return req, nil
 }
 
+func (c *Client) NewPublicRequest(method, path string, body io.Reader) (*http.Request, error) {
+	return c.NewRequest(method, path, body, "")
+}
+
+
+func (c *Client) NewPrivateRequest(method, path string, body io.Reader, token string) (*http.Request, error) {
+	return c.NewRequest(method, path, body, token)
+}
+
 func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	resp, err := c.client.Do(req)
 	if err != nil {

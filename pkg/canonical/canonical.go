@@ -51,20 +51,36 @@ func (cn *Canonicals) Run() {
 
 func (cn *Canonicals) process(c *canonical, wg *sync.WaitGroup) error {
 	defer wg.Done()
-	item, err := cn.meli.ItemsVariations(c.id)
-	Check(err)
-	item = setSKU(item, c.sku)
-
-	payload, err := json.Marshal(item)
+	item, err := cn.meli.GetItemsVariations(c.id)
 	Check(err)
 
-	fmt.Printf("\n--------------------------------------------------------\nProcessing: sku: %s \nID: %s Payload: %s \n", c.sku, c.id, payload)
+	payload, err := buildPayload(item, c)
+	Check(err)
+
+	printProcessing(c, payload)
 
 	err = cn.meli.PutSKU(c.id, cn.token, payload)
 	Check(err)
 
-	fmt.Printf("\n--------------------------------------------------------\n[SUCCESS]\nsku: %s \nID: %s \n", c.sku, c.id)
+	printSuccess(c)
 	return nil
+}
+
+func printProcessing(c *canonical, payload []byte) {
+	fmt.Printf("\n--------------------------------------------------------\nProcessing: sku: %s \nID: %s Payload: %s \n", c.sku, c.id, payload)
+}
+
+func printSuccess(c *canonical) {
+	fmt.Printf("\n--------------------------------------------------------\n[SUCCESS]\nsku: %s \nID: %s \n", c.sku, c.id)
+}
+
+func (cn *Canonicals) printHeader() {
+	fmt.Printf("\n****************************************** *******\n")
+	fmt.Printf("*** Start update Meli Items with Canonical SKU ***\n")
+	fmt.Printf("****************************************** *******\n\n")
+
+	fmt.Printf("Items to process: %d \n\n", len(cn.items))
+	fmt.Printf("****************************************** *******\n")
 }
 
 func Check(e error) {
@@ -81,11 +97,13 @@ func setSKU(i *Item, sku string) (item *Item) {
 	return i
 }
 
-func (cn *Canonicals) printHeader() {
-	fmt.Printf("\n****************************************** *******\n")
-	fmt.Printf("*** Start update Meli Items with Canonical SKU ***\n")
-	fmt.Printf("****************************************** *******\n\n")
+func buildPayload(i *Item, c *canonical) (payload []byte, err error) {
+	item := setSKU(i, c.sku)
 
-	fmt.Printf("Items to process: %d \n\n", len(cn.items))
-	fmt.Printf("****************************************** *******\n")
+	payload, err = json.Marshal(item)
+	if err != nil {
+		return nil, err
+	}
+
+	return payload, nil
 }
