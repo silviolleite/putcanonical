@@ -56,10 +56,12 @@ func (c *Client) NewRequest(method, path string, body io.Reader, token string) (
 		return nil, err
 	}
 
-	q := u.Query()
-	q.Set("access_token", token) // Add token.
+	if token != "" {
+		q := u.Query()
+		q.Set("access_token", token) // Add token.
 
-	u.RawQuery = q.Encode()
+		u.RawQuery = q.Encode()
+	}
 
 	req, err := http.NewRequest(method, u.String(), body)
 	if err != nil {
