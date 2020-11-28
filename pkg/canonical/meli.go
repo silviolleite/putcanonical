@@ -1,26 +1,24 @@
 package canonical
 
 import (
-	"fmt"
-	"net/http"
-	"encoding/json"
-	"io/ioutil"
 	"bytes"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
 )
-
 
 type MeliService service
 
 type Variation struct {
-	ID                int `json:"id"`
+	ID  int    `json:"id"`
 	Sku string `json:"seller_custom_field"`
 }
 
 type Item struct {
-	Sku string `json:"seller_custom_field"`
+	Sku        string       `json:"seller_custom_field"`
 	Variations []*Variation `json:"variations"`
 }
-
 
 func (m *MeliService) Items(ID string) (value string, err error) {
 	path := items + ID
@@ -43,7 +41,6 @@ func (m *MeliService) Items(ID string) (value string, err error) {
 
 	return string(body), nil
 }
-
 
 func (m *MeliService) ItemsVariations(ID string) (item *Item, err error) {
 	path := items + ID
@@ -73,7 +70,6 @@ func (m *MeliService) ItemsVariations(ID string) (item *Item, err error) {
 
 	return item, nil
 }
-
 
 func (m *MeliService) PutSKU(ID, token string, payload []byte) error {
 	path := items + ID

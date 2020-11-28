@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/silviolleite/putcanonical/pkg/canonical"
 	"io/ioutil"
 	"net/http"
 	"os"
-	"github.com/silviolleite/putcanonical/pkg/canonical"
 	"strings"
 )
 
@@ -31,7 +31,7 @@ func main() {
 		ls = strings.Split(string(d), "\n")
 
 	} else {
-		if i != "" && c != ""  {
+		if i != "" && c != "" {
 			ls = []string{fmt.Sprintf("%s,%s", c, i)}
 		}
 	}

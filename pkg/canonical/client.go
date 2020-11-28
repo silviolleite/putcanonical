@@ -1,13 +1,13 @@
 package canonical
 
-import (	
+import (
 	"fmt"
+	"golang.org/x/net/publicsuffix"
 	"io"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
 	"strings"
-	"golang.org/x/net/publicsuffix"
 )
 
 // URLs
@@ -15,14 +15,14 @@ const DefaultBaseURL = "https://api.mercadolibre.com/"
 
 // endpoints.
 const (
-	items        = "items/"
+	items = "items/"
 )
 
 type Client struct {
-	client              *http.Client
-	BaseURL      *url.URL
-	common              service // Reuse a single struct instead of allocating one for each service on the heap.
-	Meli             *MeliService
+	client  *http.Client
+	BaseURL *url.URL
+	common  service // Reuse a single struct instead of allocating one for each service on the heap.
+	Meli    *MeliService
 }
 
 // service holds a reference to the client
@@ -71,7 +71,6 @@ func (c *Client) NewRequest(method, path string, body io.Reader, token string) (
 	return req, nil
 }
 
-
 func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	resp, err := c.client.Do(req)
 	if err != nil {
@@ -80,4 +79,3 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 
 	return resp, err
 }
-
