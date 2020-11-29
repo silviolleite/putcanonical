@@ -3,6 +3,7 @@ package canonical
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -87,6 +88,15 @@ func (m *MeliService) PutSKU(ID, token string, payload []byte) error {
 	}
 
 	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices  {
+		return errors.New(fmt.Sprintf("Got error on update ID=%s Payload=%s Error=%s", ID, payload, string(body)))
+	}
 
 	return nil
 }
