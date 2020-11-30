@@ -4,6 +4,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/silviolleite/putcanonical v0.0.0-20201128162821-b4513a51ec6e h1:2xlleMFFozJVCniEY+JyN9Bu4SZ2Lsf+It0mPRuViMc=
 github.com/silviolleite/putcanonical/pkg/canonical v0.0.0-20201128162821-b4513a51ec6e h1:QVVMcOh8yqwwAzpqKrgerY7zhYDyf18GHBas0h9CvV0=
 github.com/silviolleite/putcanonical/pkg/canonical v0.0.0-20201128162821-b4513a51ec6e/go.mod h1:Jb3k/rftIhirDF485e3KKsdcIAvPzVQAoUCVEHW+9cI=
+github.com/silviolleite/putcanonical/pkg/canonical v0.0.0-20201130134058-6e6c6e948f33 h1:aKqiccdiA4G+d7Neh5gZuZCwqqO5hri0ktUgINRwdjE=
+github.com/silviolleite/putcanonical/pkg/canonical v0.0.0-20201130134058-6e6c6e948f33/go.mod h1:Jb3k/rftIhirDF485e3KKsdcIAvPzVQAoUCVEHW+9cI=
 github.com/sirupsen/logrus v1.6.0 h1:UBcNElsrwanuuMsnGSlYmtmgbb23qDR5dG+6X6Oo89I=
 github.com/sirupsen/logrus v1.6.0/go.mod h1:7uNnSEd1DgxDLC74fIahvMZmmYsHGZGEOFrfsX/uA88=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
