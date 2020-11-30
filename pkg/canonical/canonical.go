@@ -70,7 +70,7 @@ func (cn *Canonicals) process(c *canonical, wg *sync.WaitGroup) error {
 }
 
 func printProcessing(c *canonical, payload []byte) {
-	fmt.Printf("\n--------------------------------------------------------\nProcessing: sku: %s \nID: %s Payload: %s \n", c.sku, c.id, payload)
+	fmt.Printf("\n--------------------------------------------------------\n[Processing]\n sku: %s \nID: %s Payload: %s \n", c.sku, c.id, payload)
 }
 
 func printSuccess(c *canonical) {
