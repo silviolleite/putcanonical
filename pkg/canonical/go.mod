@@ -1,4 +1,4 @@
-module putcanonical/pkg/canonical
+module github.com/silviolleite/putcanonical/pkg/canonical
 
 go 1.14
 
