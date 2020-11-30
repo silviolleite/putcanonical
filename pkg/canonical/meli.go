@@ -18,7 +18,7 @@ type Variation struct {
 
 type Item struct {
 	Sku        string       `json:"seller_custom_field"`
-	Variations []*Variation `json:"variations"`
+	Variations []*Variation `json:"variations,omitempty"`
 }
 
 func (m *MeliService) GetItems(ID string) (value string, err error) {
